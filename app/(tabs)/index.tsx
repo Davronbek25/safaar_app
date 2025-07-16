@@ -47,6 +47,10 @@ const guides = [
   },
 ];
 
+const imgConditional = (src: string): boolean => {
+  return !!src;
+}
+
 export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
@@ -76,12 +80,14 @@ export default function HomeScreen() {
         {/* Logo */}
         <View style={styles.logoContainer}>
           <Image 
-            source={require('@/assets/images/icon.png')} 
+            source={imgConditional('@/assets/images/logo_uzb.jpg')
+                ? require('@/assets/images/logo_uzb.jpg')
+                : require('@/assets/images/icon.png')
+            }
             style={styles.logo}
             resizeMode="contain"
           />
-          <Text style={styles.logoText}>SAFAR</Text>
-          <Text style={styles.logoSubtext}>UZBEKISTAN</Text>
+          <Text style={styles.logoText}>SAFAAR</Text>
         </View>
 
         {/* Choose the city */}
