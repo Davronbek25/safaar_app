@@ -69,7 +69,7 @@ export default function HomeScreen() {
             </TouchableOpacity>
             <TouchableOpacity style={styles.pill}>
               <FontAwesome name="users" size={16} color="#666" />
-              <Text style={[styles.pillText, styles.inactivePillText]}>Following</Text>
+              <Text className="bg-blend-lighten" style={[styles.pillText, styles.inactivePillText]}>Following</Text>
             </TouchableOpacity>
           </View>
         </View>
