@@ -12,12 +12,13 @@ import { FontAwesome } from '@expo/vector-icons';
 import SearchBar from '@/components/ui/SearchBar';
 import CityCard from '@/components/ui/CityCard';
 import GuideCard from '@/components/ui/GuideCard';
+import HomeCarousel from "@/components/ui/HomeCarousel";
 
 const cities = [
-  { id: 'tashkent', name: 'Tashkent', image: require('@/assets/images/favicon.png') },
-  { id: 'rome', name: 'Rome', image: require('@/assets/images/favicon.png') },
-  { id: 'bukhara', name: 'Bukhara', image: require('@/assets/images/favicon.png') },
-  { id: 'paris', name: 'Paris', image: require('@/assets/images/favicon.png') },
+  { id: 'tashkent', name: 'Tashkent', image: require('@/assets/images/tashkent_card.jpg') },
+  { id: 'rome', name: 'Rome', image: require('@/assets/images/rome_card.png') },
+  { id: 'bukhara', name: 'Bukhara', image: require('@/assets/images/bukhara_card.jpg') },
+  { id: 'paris', name: 'Paris', image: require('@/assets/images/paris_card.jpg') },
 ];
 
 const guides = [
@@ -27,7 +28,7 @@ const guides = [
     location: 'Tashkent',
     rating: 4.5,
     price: '$10.99',
-    image: require('@/assets/images/favicon.png'),
+    image: require('@/assets/images/guide_sabina.png'),
   },
   {
     id: 'amiran',
@@ -35,7 +36,7 @@ const guides = [
     location: 'Rome',
     rating: 5.0,
     price: '$15.99',
-    image: require('@/assets/images/favicon.png'),
+    image: require('@/assets/images/guide_amirxan.jpg'),
   },
   {
     id: 'john',
@@ -43,7 +44,7 @@ const guides = [
     location: 'Bukhara',
     rating: 4.8,
     price: '$20.99',
-    image: require('@/assets/images/favicon.png'),
+    image: require('@/assets/images/guide_baxa.jpg'),
   },
 ];
 
@@ -55,6 +56,9 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Search Bar */}
+        <SearchBar placeholder="Search" />
+
         {/* Header */}
         <View style={styles.header}>
           {/* Navigation Pills */}
@@ -69,42 +73,42 @@ export default function HomeScreen() {
             </TouchableOpacity>
             <TouchableOpacity style={styles.pill}>
               <FontAwesome name="users" size={16} color="#666" />
-              <Text className="bg-blend-lighten" style={[styles.pillText, styles.inactivePillText]}>Following</Text>
+              <Text style={[styles.pillText, styles.inactivePillText]}>Following</Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        {/* Search Bar */}
-        <SearchBar placeholder="Search" />
-
         {/* Logo */}
-        <View style={styles.logoContainer}>
-          <Image 
-            source={imgConditional('@/assets/images/logo_uzb.jpg')
-                ? require('@/assets/images/logo_uzb.jpg')
-                : require('@/assets/images/icon.png')
-            }
-            style={styles.logo}
-            resizeMode="contain"
-          />
-          <Text style={styles.logoText}>SAFAAR</Text>
+        {/*<View style={styles.logoContainer}>*/}
+        {/*  <Image */}
+        {/*    source={imgConditional('@/assets/images/logo_uzb.jpg')*/}
+        {/*        ? require('@/assets/images/uzb_travel_logo_white.jpg')*/}
+        {/*        : require('@/assets/images/icon.png')*/}
+        {/*    }*/}
+        {/*    style={styles.logo}*/}
+        {/*    resizeMode="contain"*/}
+        {/*  />*/}
+        {/*  <Text style={styles.logoText}>SAFAAR</Text>*/}
+        {/*/!*</View>*!/*/}
+        <View>
+          <HomeCarousel />
         </View>
 
         {/* Choose the city */}
-        <View style={styles.section}>
+        <View style={styles.section} className="mt-3">
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Choose the city</Text>
             <FontAwesome name="chevron-right" size={16} color="#666" />
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.cityList}>
             {cities.map((city) => (
-              <CityCard key={city.id} {...city} />
+              <CityCard key={city.id} {...city} imgConditional={imgConditional(city.image)} />
             ))}
           </ScrollView>
         </View>
 
         {/* Candidates */}
-        <View style={styles.section}>
+        <View>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Candidates</Text>
             <FontAwesome name="chevron-right" size={16} color="#666" />
@@ -169,17 +173,19 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: 'center',
-    marginVertical: 24,
+    marginVertical: 8,
   },
   logo: {
-    width: 120,
-    height: 60,
+    width: 344,
+    height: 136,
   },
   logoText: {
-    fontSize: 24,
+    fontSize: 25,
     fontWeight: 'bold',
-    color: '#1E40AF',
-    marginTop: 8,
+    color: '#132858',
+    position: 'relative',
+    bottom: '70%',
+    right: '33%',
   },
   logoSubtext: {
     fontSize: 16,
@@ -191,8 +197,8 @@ const styles = StyleSheet.create({
   },
   sectionHeader: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    gap: 12,
     paddingHorizontal: 16,
     marginBottom: 16,
   },

@@ -16,7 +16,7 @@ export default function SearchBar({
   onSubmit 
 }: SearchBarProps) {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} className="mt-2">
       <FontAwesome name="search" size={16} color="#9CA3AF" style={styles.icon} />
       <TextInput
         style={styles.input}
@@ -37,8 +37,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F3F4F6',
     borderRadius: 12,
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 2,
     marginHorizontal: 16,
+    marginTop: 12,
   },
   icon: {
     marginRight: 12,

@@ -6,7 +6,9 @@ module.exports = function (api) {
       { jsxImportSource: 'nativewind'}],
       "nativewind/babel",
     ],
-    plugins: [],
+    plugins: [
+      'react-native-reanimated/plugin',
+    ],
   };
 };
 

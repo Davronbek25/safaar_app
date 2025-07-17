@@ -90,10 +90,10 @@ SafarApp/
    ```bash
    # For web development
    npm run web
-   
+
    # For iOS (requires macOS)
    npm run ios
-   
+
    # For Android
    npm run android
    ```
@@ -235,3 +235,32 @@ This project is licensed under the MIT License.
 
 For support and questions, please contact the development team or create an issue in the repository.
 
+
+## Git Repository Configuration Issue
+
+If your code is being pushed to someone else's GitHub repository (https://github.com/Davronbek25/safaar_app.git) instead of your own, you need to update the Git remote URL.
+
+### How to fix:
+
+#### Option 1: Use the provided script (Recommended)
+
+1. Run the `update_git_remote.bat` script in the project directory
+2. Enter your GitHub username and repository name when prompted
+3. The script will update the remote URL and verify the change
+
+#### Option 2: Manual update
+
+1. Open a terminal or command prompt in the project directory
+2. Run the following command, replacing `YOUR_USERNAME` with your GitHub username and `YOUR_REPO` with your repository name:
+
+```
+git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+```
+
+3. Verify the change with:
+
+```
+git remote -v
+```
+
+This should now show your GitHub repository URL instead of https://github.com/Davronbek25/safaar_app.git.
