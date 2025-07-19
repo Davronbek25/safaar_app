@@ -7,20 +7,16 @@ interface CityCardProps {
   id: string;
   name: string;
   image: ImageSourcePropType;
-  imgConditional?: boolean;
 }
 
-export default function CityCard({ id, name, image, imgConditional }: CityCardProps) {
+export default function CityCard({ id, name, image}: CityCardProps) {
   const handlePress = () => {
     router.push(`/city/${id}`);
   };
 
   return (
     <TouchableOpacity style={styles.container} onPress={handlePress}>
-      <Image source={imgConditional ? image
-          : {uri:"https://placehold.co/600x400/1a1a1a/FFFFFF.png"}}
-             style={styles.image}
-      />
+      <Image source={image} style={styles.image} />
       <Text style={styles.name}>{name}</Text>
     </TouchableOpacity>
   );

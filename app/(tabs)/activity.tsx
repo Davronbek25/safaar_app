@@ -17,7 +17,7 @@ const activities = [
     user: 'starryskies23',
     action: 'Started following you',
     time: '1d',
-    avatar: require('@/assets/images/favicon.png'),
+    avatar: require('@/assets/images/avatar_1.png'),
   },
   {
     id: '2',
@@ -25,8 +25,8 @@ const activities = [
     user: 'nebulanomad',
     action: 'Liked your post',
     time: '1d',
-    avatar: require('@/assets/images/favicon.png'),
-    image: require('@/assets/images/favicon.png'),
+    avatar: require('@/assets/images/avatar_2.jpg'),
+    image: require('@/assets/images/post-1.png'),
   },
   {
     id: '3',
@@ -35,7 +35,7 @@ const activities = [
     action: 'Liked your comment',
     time: '2d',
     comment: 'Ishingizga omad!!!',
-    avatar: require('@/assets/images/favicon.png'),
+    avatar: require('@/assets/images/avatart_3.jpg'),
   },
   {
     id: '4',
@@ -43,8 +43,8 @@ const activities = [
     user: 'lunavoyager',
     action: 'Saved your post',
     time: '3d',
-    avatar: require('@/assets/images/favicon.png'),
-    image: require('@/assets/images/favicon.png'),
+    avatar: require('@/assets/images/avatar_4.jpg'),
+    image: require('@/assets/images/post-2.png'),
   },
   {
     id: '5',
@@ -53,8 +53,8 @@ const activities = [
     action: 'Commented on your post',
     time: '4d',
     comment: "I'm going in september. what about you?",
-    avatar: require('@/assets/images/favicon.png'),
-    image: require('@/assets/images/favicon.png'),
+    avatar: require('@/assets/images/avatar_5.jpg'),
+    image: require('@/assets/images/post-2.png'),
   },
   {
     id: '6',
@@ -62,8 +62,8 @@ const activities = [
     user: 'nebulanomad',
     action: 'Wanted tour with you',
     time: '5d',
-    avatar: require('@/assets/images/favicon.png'),
-    image: require('@/assets/images/favicon.png'),
+    avatar: require('@/assets/images/avatar_1.png'),
+    image: require('@/assets/images/post-3.png'),
   },
   {
     id: '7',
@@ -72,7 +72,7 @@ const activities = [
     action: 'Liked your comment',
     time: '5d',
     comment: 'This is so adorable!!!',
-    avatar: require('@/assets/images/favicon.png'),
+    avatar: require('@/assets/images/avatar_2.jpg'),
   },
 ];
 
@@ -111,7 +111,7 @@ export default function ActivityScreen() {
                 <Text style={styles.time}>{activity.time}</Text>
                 {activity.type === 'follow' && (
                   <TouchableOpacity style={styles.followButton}>
-                    <Text style={styles.followButtonText}>Button</Text>
+                    <Text style={styles.followButtonText}>Follow Back</Text>
                   </TouchableOpacity>
                 )}
               </View>

@@ -1,16 +1,68 @@
 import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  ScrollView, 
-  StyleSheet, 
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
   SafeAreaView,
   Image,
   TouchableOpacity,
+  ImageBackground, ImageSourcePropType,
 } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import SearchBar from '@/components/ui/SearchBar';
 import Button from '@/components/ui/Button';
+import SearchBarMulti from "@/components/ui/CombinedSearchBar";
+import CombinedSearchBar from "@/components/ui/CombinedSearchBar";
+
+interface GuideCardProps {
+  guideImage: ImageSourcePropType;
+}
+
+function GuideCard({guideImage}: GuideCardProps) {
+  return (
+      <View className="bg-white rounded-2xl overflow-hidden shadow-sm mx-4 my-4">
+        {/* Image */}
+        <ImageBackground
+            source={guideImage}
+            className="w-full h-48"
+            imageStyle={{ borderTopLeftRadius: 16, borderTopRightRadius: 16 }}
+            resizeMode="cover"
+        />
+
+        {/* Content */}
+        <View className="p-4">
+          {/* Title row */}
+          <View className="flex-row items-center mb-2">
+            <Text className="font-bold text-lg mr-3">BUKHARA</Text>
+            <Text className="font-bold text-lg mr-3">TASHKENT</Text>
+            <Text className="font-bold text-lg">JOHN</Text>
+          </View>
+
+          {/* Reviews & distance */}
+          <View className="flex-row items-center mb-4">
+            <FontAwesome name="star" size={16} color="#888" />
+            <Text className="text-gray-400 ml-1 mr-4">
+              4.8 (500 reviews)
+            </Text>
+            <Ionicons name="location-outline" size={16} color="#888" />
+            <Text className="text-gray-400 ml-1">1.2 miles</Text>
+          </View>
+
+          {/* Price and button */}
+          <View className="flex-row items-center justify-between">
+            <Text className="text-2xl font-bold">
+              $10.99{' '}
+              <Text className="text-base font-normal text-gray-500">/ DAY</Text>
+            </Text>
+            <TouchableOpacity className="bg-black px-6 py-2 rounded-xl">
+              <Text className="text-white text-lg font-medium">Select</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+  );
+}
 
 export default function SearchScreen() {
   const [searchText, setSearchText] = useState('');
@@ -19,13 +71,12 @@ export default function SearchScreen() {
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Header */}
-        <View style={styles.header}>
-          <Text style={styles.headerTitle}>BUKHARA</Text>
-          <Text style={styles.headerSubtitle}>Sep 12 - 15 • 1 guide • 2 guests</Text>
-          <TouchableOpacity style={styles.editButton}>
-            <FontAwesome name="edit" size={16} color="#000" />
-          </TouchableOpacity>
-        </View>
+        <CombinedSearchBar
+            initialValue="BUKHARA"
+            subtitle="Sep 12 – 15 • 1 guide • 2 guests"
+            onSearch={text => console.log("Search for:", text)}
+            onEditPress={() => console.log("Edit pressed")}
+        />
 
         {/* Filter and Sort */}
         <View style={styles.filterContainer}>
@@ -42,86 +93,20 @@ export default function SearchScreen() {
 
         {/* Map */}
         <View style={styles.mapContainer}>
-          <View style={styles.mapPlaceholder}>
-            <Text style={styles.mapText}>Map View</Text>
-            {/* Price markers */}
-            <View style={[styles.priceMarker, { top: 50, left: 30 }]}>
-              <Text style={styles.priceText}>$20</Text>
-            </View>
-            <View style={[styles.priceMarker, { top: 80, right: 40 }]}>
-              <Text style={styles.priceText}>$50</Text>
-            </View>
-            <View style={[styles.priceMarker, { bottom: 100, right: 60 }]}>
-              <Text style={styles.priceText}>$200</Text>
-            </View>
-            <View style={[styles.priceMarker, styles.selectedMarker, { bottom: 120, left: 50 }]}>
-              <Text style={[styles.priceText, styles.selectedPriceText]}>$10</Text>
-            </View>
-            <View style={[styles.priceMarker, { bottom: 80, left: 20 }]}>
-              <Text style={styles.priceText}>$45</Text>
-            </View>
-            <View style={[styles.priceMarker, { top: 120, right: 80 }]}>
-              <Text style={styles.priceText}>$80</Text>
-            </View>
-            <View style={[styles.priceMarker, { bottom: 60, right: 20 }]}>
-              <Text style={styles.priceText}>$15</Text>
-            </View>
-          </View>
+          <ImageBackground
+              source={require('../../assets/images/map.png')} // <-- update path to your PNG
+              style={styles.mapPlaceholder}
+              imageStyle={{ resizeMode: 'cover' }} // or 'contain', as needed
+          >
+          </ImageBackground>
         </View>
 
         {/* Guide Card */}
-        <View style={styles.guideCard}>
-          <Image 
-            source={require('@/assets/images/icon.png')} 
-            style={styles.guideImage}
-          />
-          <View style={styles.guideInfo}>
-            <Text style={styles.guideLocation}>BUKHARA TASHKENT JOHN</Text>
-            <View style={styles.ratingContainer}>
-              <FontAwesome name="star" size={12} color="#F59E0B" />
-              <Text style={styles.ratingText}>4.8 (500 reviews)</Text>
-              <FontAwesome name="map-marker" size={12} color="#666" style={{ marginLeft: 8 }} />
-              <Text style={styles.distanceText}>1.2 miles</Text>
-            </View>
-            <View style={styles.priceContainer}>
-              <Text style={styles.price}>$10.99</Text>
-              <Text style={styles.priceUnit}>/ DAY</Text>
-              <Button 
-                title="Select" 
-                onPress={() => {}} 
-                size="small"
-                style={styles.selectButton}
-              />
-            </View>
-          </View>
-        </View>
+       <GuideCard guideImage={require('@/assets/images/bukhara_card.jpg')} />
 
         {/* Additional guide card placeholder */}
-        <View style={[styles.guideCard, { marginTop: 16 }]}>
-          <Image 
-            source={require('@/assets/images/icon.png')} 
-            style={styles.guideImage}
-          />
-          <View style={styles.guideInfo}>
-            <Text style={styles.guideLocation}>BUKHARA GUIDE 2</Text>
-            <View style={styles.ratingContainer}>
-              <FontAwesome name="star" size={12} color="#F59E0B" />
-              <Text style={styles.ratingText}>4.5 (320 reviews)</Text>
-              <FontAwesome name="map-marker" size={12} color="#666" style={{ marginLeft: 8 }} />
-              <Text style={styles.distanceText}>2.1 miles</Text>
-            </View>
-            <View style={styles.priceContainer}>
-              <Text style={styles.price}>$15.99</Text>
-              <Text style={styles.priceUnit}>/ DAY</Text>
-              <Button 
-                title="Select" 
-                onPress={() => {}} 
-                size="small"
-                style={styles.selectButton}
-              />
-            </View>
-          </View>
-        </View>
+        <GuideCard guideImage={require('@/assets/images/rome_card.png')} />
+
       </ScrollView>
     </SafeAreaView>
   );
@@ -201,17 +186,16 @@ const styles = StyleSheet.create({
   priceMarker: {
     position: 'absolute',
     backgroundColor: 'white',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 6,
-    borderWidth: 1,
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 16,
     borderColor: '#D1D5DB',
   },
   selectedMarker: {
     backgroundColor: '#000',
   },
   priceText: {
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: '600',
     color: '#374151',
   },

@@ -78,18 +78,7 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        {/* Logo */}
-        {/*<View style={styles.logoContainer}>*/}
-        {/*  <Image */}
-        {/*    source={imgConditional('@/assets/images/logo_uzb.jpg')*/}
-        {/*        ? require('@/assets/images/uzb_travel_logo_white.jpg')*/}
-        {/*        : require('@/assets/images/icon.png')*/}
-        {/*    }*/}
-        {/*    style={styles.logo}*/}
-        {/*    resizeMode="contain"*/}
-        {/*  />*/}
-        {/*  <Text style={styles.logoText}>SAFAAR</Text>*/}
-        {/*/!*</View>*!/*/}
+        {/* Carousel */}
         <View>
           <HomeCarousel />
         </View>
@@ -98,11 +87,11 @@ export default function HomeScreen() {
         <View style={styles.section} className="mt-3">
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Choose the city</Text>
-            <FontAwesome name="chevron-right" size={16} color="#666" />
+            <FontAwesome className="relative top-0.5" name="chevron-right" size={16} color="#666" />
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.cityList}>
             {cities.map((city) => (
-              <CityCard key={city.id} {...city} imgConditional={imgConditional(city.image)} />
+              <CityCard key={city.id} {...city} />
             ))}
           </ScrollView>
         </View>
@@ -111,7 +100,7 @@ export default function HomeScreen() {
         <View>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Candidates</Text>
-            <FontAwesome name="chevron-right" size={16} color="#666" />
+            <FontAwesome className="relative top-0.5" name="chevron-right" size={16} color="#666" />
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.guideList}>
             {guides.map((guide) => (
