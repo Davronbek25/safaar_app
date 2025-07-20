@@ -3,6 +3,7 @@ import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import PostCard from '@/components/ui/PostCard';
+import { useRouter } from 'expo-router';
 
 const cities = [
   { id: 'tashkent', name: 'Tashkent', image: require('@/assets/images/tashkent_card.jpg') },
@@ -31,6 +32,7 @@ const posts = [
 ]
 
 export default function ProfileScreen() {
+  const router = useRouter();
   return (
     <View className="flex-1 bg-white pt-4 px-2">
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -45,7 +47,10 @@ export default function ProfileScreen() {
               <Text className="text-base font-semibold">Professional dashboard</Text>
             </TouchableOpacity>
             <TouchableOpacity className="bg-gray-100 rounded-3xl px-3 py-2 flex items-center">
-              <Text className="text-base font-semibold">Switch account</Text>
+              <Text 
+                className="text-base font-semibold">
+                Switch account
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

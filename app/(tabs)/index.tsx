@@ -8,7 +8,8 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import { FontAwesome, AntDesign, Ionicons } from '@expo/vector-icons';
 import SearchBar from '@/components/ui/SearchBar';
 import CityCard from '@/components/ui/CityCard';
 import GuideCard from '@/components/ui/GuideCard';
@@ -53,6 +54,8 @@ const imgConditional = (src: string): boolean => {
 }
 
 export default function HomeScreen() {
+  const router = useRouter();
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -63,17 +66,26 @@ export default function HomeScreen() {
         <View style={styles.header}>
           {/* Navigation Pills */}
           <View style={styles.navPills}>
-            <TouchableOpacity style={[styles.pill, styles.activePill]}>
-              <FontAwesome name="heart" size={16} color="#000" />
-              <Text style={styles.pillText}>Favorites</Text>
+            <TouchableOpacity 
+            style={[styles.pill, styles.activePill]}
+            onPress={() => router.push('/activity/123')}
+            >
+              <Ionicons name="heart" size={18} color="#000" />
+              <Text style={styles.pillText}>Activities</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.pill}>
-              <FontAwesome name="history" size={16} color="#666" />
-              <Text style={[styles.pillText, styles.inactivePillText]}>History</Text>
+            <TouchableOpacity 
+            style={styles.pill}
+            onPress={() => router.push('/chat/123')}
+            >
+              <Ionicons name="chatbubble-ellipses-outline" size={18} color="#666" />
+              <Text style={[styles.pillText, styles.inactivePillText]}>Chat</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.pill}>
-              <FontAwesome name="users" size={16} color="#666" />
-              <Text style={[styles.pillText, styles.inactivePillText]}>Following</Text>
+            <TouchableOpacity 
+            style={styles.pill}
+            onPress={() => router.push('/dashboard/123')}
+            >
+              <AntDesign name="dashboard" size={18} color="#666" />
+              <Text style={[styles.pillText, styles.inactivePillText]}>Dashboard</Text>
             </TouchableOpacity>
           </View>
         </View>

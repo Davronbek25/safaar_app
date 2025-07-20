@@ -8,7 +8,7 @@ export default function SignInScreen() {
     <View style={styles.container}>
       {/* Placeholder Image */}
       <ImageBackground
-        source={require('@/assets/images/chat_screen.png')} // Path to your image
+        source={require('@/assets/images/signIn.png')} // Path to your image
         style={styles.imageBackground} // Apply styles to define dimensions
         resizeMode="contain" // Optional: Adjust how the image is resized
       />

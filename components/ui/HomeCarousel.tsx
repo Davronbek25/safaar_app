@@ -6,7 +6,12 @@ import Carousel, {
     Pagination,
 } from "react-native-reanimated-carousel";
 
-const data = [...new Array(6).keys()];
+const data = [
+    require('@/assets/images/uzb_travel_logo_white.jpg'),
+    require('@/assets/images/europe_logo.jpg'),
+    require('@/assets/images/italy_logo.png'),
+    require('@/assets/images/switzerland_logo.png'),
+]
 const width = Dimensions.get("window").width;
 
 function HomeCarousel() {
@@ -32,7 +37,7 @@ function HomeCarousel() {
                 height={width / 2.5}
                 data={data}
                 onProgressChange={progress}
-                renderItem={({ index }) => (
+                renderItem={({ item, index }) => (
                     <View
                         style={{
                             flex: 1,
@@ -41,7 +46,7 @@ function HomeCarousel() {
                         }}
                     >
                         <Image
-                            source={require('@/assets/images/uzb_travel_logo_white.jpg')}
+                            source={item}
                             style={styles.logo}
                             resizeMode="contain"
                         />

@@ -11,7 +11,7 @@ interface CityCardProps {
 
 export default function CityCard({ id, name, image}: CityCardProps) {
   const handlePress = () => {
-    router.push(`/city/${id}`);
+    // router.push(`/city/${id}`);
   };
 
   return (

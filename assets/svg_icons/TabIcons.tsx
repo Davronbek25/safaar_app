@@ -121,14 +121,14 @@ const icons = {
       {/* Horizontal Line */}
       <Path
         d="M7 12H17"
-        stroke="white" // Inner cross line is white to contrast with the filled rectangle
+        stroke={color} // Inner cross line is white to contrast with the filled rectangle
         strokeWidth="2"
         strokeLinecap="round"
       />
       {/* Vertical Line */}
       <Path
         d="M12 7L12 17"
-        stroke="white" // Inner cross line is white to contrast with the filled rectangle
+        stroke={color} // Inner cross line is white to contrast with the filled rectangle
         strokeWidth="2"
         strokeLinecap="round"
       />

@@ -14,7 +14,7 @@ interface GuideCardProps {
 
 export default function GuideCard({ id, name, location, rating, price, image }: GuideCardProps) {
   const handlePress = () => {
-    router.push(`/guide/${id}`);
+    // router.push(`/guide/${id}`);
   };
 
   return (

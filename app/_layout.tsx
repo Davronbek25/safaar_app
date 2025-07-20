@@ -67,6 +67,9 @@ function RootLayoutNav() {
                     <Stack.Screen name="guide/[id]" options={{headerShown: false}}/>
                     <Stack.Screen name="booking/[id]" options={{headerShown: false}}/>
                     <Stack.Screen name="chat/[id]" options={{headerShown: false}}/>
+                    <Stack.Screen name="dashboard/[id]" options={{headerShown: false}}/>
+                    <Stack.Screen name="activity/[id]" options={{headerShown: false}}/>
+                    <Stack.Screen name="sign/[id]" options={{headerShown: false}}/>
                     <Stack.Screen name="modal" options={{presentation: 'modal'}}/>
                 </Stack>
             </ThemeProvider>

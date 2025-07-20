@@ -105,7 +105,7 @@ export default function SearchScreen() {
        <GuideCard guideImage={require('@/assets/images/bukhara_card.jpg')} />
 
         {/* Additional guide card placeholder */}
-        <GuideCard guideImage={require('@/assets/images/rome_card.png')} />
+        <GuideCard guideImage={require('@/assets/images/bukhara_card.jpg')} />
 
       </ScrollView>
     </SafeAreaView>

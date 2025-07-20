@@ -1,14 +1,14 @@
 import { StyleSheet, View, Text, Image, ImageBackground } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 
-export default function SignInScreen() {
+export default function DashboardScreen() {
   const { id } = useLocalSearchParams();
 
   return (
     <View style={styles.container}>
       {/* Placeholder Image */}
       <ImageBackground
-        source={require('@/assets/images/chat_screen.png')} // Path to your image
+        source={require('@/assets/images/dashboard_screen.png')} // Path to your image
         style={styles.imageBackground} // Apply styles to define dimensions
         resizeMode="contain" // Optional: Adjust how the image is resized
       />
