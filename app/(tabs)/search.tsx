@@ -12,7 +12,6 @@ import {
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import SearchBar from '@/components/ui/SearchBar';
 import Button from '@/components/ui/Button';
-import SearchBarMulti from "@/components/ui/CombinedSearchBar";
 import CombinedSearchBar from "@/components/ui/CombinedSearchBar";
 
 interface GuideCardProps {

@@ -4,11 +4,11 @@
     "slug": "SafarApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/app_logo.jpg",
+    "icon": "./assets/images/app_logo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/app_logo.jpg",
+      "image": "./assets/images/app_logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -20,7 +20,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/app_logo.jpg",
+        "foregroundImage": "./assets/images/app_logo.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.anonymous.SafarApp"
@@ -28,7 +28,7 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/app_logo.jpg"
+      "favicon": "./assets/images/app_logo.png"
     },
     "plugins": [
       "expo-router"
