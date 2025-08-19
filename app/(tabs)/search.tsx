@@ -9,104 +9,40 @@ import {
   TouchableOpacity,
   ImageBackground, ImageSourcePropType,
 } from 'react-native';
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
-import SearchBar from '@/components/ui/SearchBar';
-import Button from '@/components/ui/Button';
-import CombinedSearchBar from "@/components/ui/CombinedSearchBar";
-
-interface GuideCardProps {
-  guideImage: ImageSourcePropType;
-}
-
-function GuideCard({guideImage}: GuideCardProps) {
-  return (
-      <View className="bg-white rounded-2xl overflow-hidden shadow-sm mx-4 my-4">
-        {/* Image */}
-        <ImageBackground
-            source={guideImage}
-            className="w-full h-48"
-            imageStyle={{ borderTopLeftRadius: 16, borderTopRightRadius: 16 }}
-            resizeMode="cover"
-        />
-
-        {/* Content */}
-        <View className="p-4">
-          {/* Title row */}
-          <View className="flex-row items-center mb-2">
-            <Text className="font-bold text-lg mr-3">BUKHARA</Text>
-            <Text className="font-bold text-lg mr-3">TASHKENT</Text>
-            <Text className="font-bold text-lg">JOHN</Text>
-          </View>
-
-          {/* Reviews & distance */}
-          <View className="flex-row items-center mb-4">
-            <FontAwesome name="star" size={16} color="#888" />
-            <Text className="text-gray-400 ml-1 mr-4">
-              4.8 (500 reviews)
-            </Text>
-            <Ionicons name="location-outline" size={16} color="#888" />
-            <Text className="text-gray-400 ml-1">1.2 miles</Text>
-          </View>
-
-          {/* Price and button */}
-          <View className="flex-row items-center justify-between">
-            <Text className="text-2xl font-bold">
-              $10.99{' '}
-              <Text className="text-base font-normal text-gray-500">/ DAY</Text>
-            </Text>
-            <TouchableOpacity className="bg-black px-6 py-2 rounded-xl">
-              <Text className="text-white text-lg font-medium">Select</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-  );
-}
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import apartments from '@/assets/dummyData.json';
 
 export default function SearchScreen() {
-  const [searchText, setSearchText] = useState('');
-
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Header */}
-        <CombinedSearchBar
-            initialValue="BUKHARA"
-            subtitle="Sep 12 – 15 • 1 guide • 2 guests"
-            onSearch={text => console.log("Search for:", text)}
-            onEditPress={() => console.log("Edit pressed")}
-        />
-
-        {/* Filter and Sort */}
-        <View style={styles.filterContainer}>
-          <TouchableOpacity style={styles.filterButton}>
-            <Text style={styles.filterText}>Filter</Text>
-            <FontAwesome name="chevron-down" size={12} color="#666" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.filterButton}>
-            <Text style={styles.filterText}>Sort</Text>
-            <FontAwesome name="chevron-down" size={12} color="#666" />
-          </TouchableOpacity>
-          <Text style={styles.resultsText}>99 results</Text>
-        </View>
-
-        {/* Map */}
-        <View style={styles.mapContainer}>
-          <ImageBackground
-              source={require('../../assets/images/map.png')} // <-- update path to your PNG
-              style={styles.mapPlaceholder}
-              imageStyle={{ resizeMode: 'cover' }} // or 'contain', as needed
+      <MapView 
+        style={styles.map}
+        provider={PROVIDER_GOOGLE}
+        initialRegion={{
+          latitude: 37.788825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        showsUserLocation={true}
+        showsMyLocationButton={true}
+      >
+        {apartments.map((apartment) => (
+          <Marker
+            key={apartment.id}
+            coordinate={{
+              latitude: apartment.latitude,
+              longitude: apartment.longitude
+            }}
+            title={apartment.title}
+            description={apartment.description}
           >
-          </ImageBackground>
-        </View>
-
-        {/* Guide Card */}
-       <GuideCard guideImage={require('@/assets/images/bukhara_card.jpg')} />
-
-        {/* Additional guide card placeholder */}
-        <GuideCard guideImage={require('@/assets/images/bukhara_card.jpg')} />
-
-      </ScrollView>
+            <View style={styles.customMarker}>
+              <Text style={styles.markerText}>${apartment.price}</Text>
+            </View>
+          </Marker>
+        ))}
+      </MapView>
     </SafeAreaView>
   );
 }
@@ -114,7 +50,10 @@ export default function SearchScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+  },
+  map: {
+    width: '100%',
+    height: '100%',
   },
   header: {
     paddingHorizontal: 16,
@@ -260,6 +199,31 @@ const styles = StyleSheet.create({
   },
   selectButton: {
     paddingHorizontal: 16,
+  },
+  customMarker: {
+    backgroundColor: 'white',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderWidth: 2,
+    borderColor: '#007AFF',
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 60,
+    height: 32,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 8,
+  },
+  markerText: {
+    fontSize: 13,
+    fontWeight: '700',
+    color: '#007AFF',
+    textAlign: 'center',
+    includeFontPadding: false,
+    textAlignVertical: 'center',
   },
 });
 

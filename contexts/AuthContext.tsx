@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import AuthService, { User } from '@/lib/auth';
+import { useRouter } from 'expo-router';
 
 interface AuthContextType {
   user: User | null;
@@ -16,16 +17,28 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter()
 
   useEffect(() => {
-    checkAuthState();
+    // checkAuthState();
   }, []);
 
   const checkAuthState = async () => {
     try {
-      const currentUser = await AuthService.getCurrentUser();
-      setUser(currentUser);
+      console.log('Checking authentication state...');
+      const isLoggedIn = await AuthService.isLoggedIn();
+      if (isLoggedIn) {
+        const currentUser = await AuthService.getCurrentUser();
+        setUser(currentUser);
+      } else {
+        console.log('No active session. Redirecting to login...');
+        setUser(null);
+        router.push('/auth/login')
+        // Redirect to login page if needed
+        // Example: router.push('/auth/login');
+      }
     } catch (error) {
+      console.error('Error in checkAuthState:', error);
       setUser(null);
     } finally {
       setLoading(false);

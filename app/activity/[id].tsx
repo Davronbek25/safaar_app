@@ -35,7 +35,7 @@ const activities = [
     action: 'Liked your comment',
     time: '2d',
     comment: 'Ishingizga omad!!!',
-    avatar: require('@/assets/images/avatart_3.jpg'),
+    avatar: require('@/assets/images/avatar_3.jpg'),
   },
   {
     id: '4',

@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "price": 125,
+    "title": "Cozy Studio in Downtown SF",
+    "numberOfStars": 4,
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    "description": "A quiet and cozy studio located in the heart of San Francisco, close to cafes, shops, and public transport."
+  },
+  {
+    "id": 2,
+    "latitude": 37.7790,
+    "longitude": -122.4313,
+    "price": 200,
+    "title": "Luxury Apartment near Market Street",
+    "numberOfStars": 5,
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+    "description": "Spacious and stylish apartment with premium amenities, just steps away from Market Street and downtown hotspots."
+  },
+  {
+    "id": 3,
+    "latitude": 37.7655,
+    "longitude": -122.4270,
+    "price": 95,
+    "title": "Budget Stay in Mission District",
+    "numberOfStars": 3,
+    "rating": 4.0,
+    "image": "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+    "description": "Affordable and convenient stay in the vibrant Mission District, surrounded by local eateries and cultural attractions."
+  },
+  {
+    "id": 4,
+    "latitude": 37.8000,
+    "longitude": -122.4376,
+    "price": 185,
+    "title": "Bright Flat in Marina",
+    "numberOfStars": 4,
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1600585154203-3c1d98b53dc6",
+    "description": "Sunny and comfortable flat with large windows and bay views, located in the charming Marina neighborhood."
+  },
+  {
+    "id": 5,
+    "latitude": 37.7924,
+    "longitude": -122.3930,
+    "price": 250,
+    "title": "Modern Loft near Embarcadero",
+    "numberOfStars": 5,
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1615874959474-d609969a9b31",
+    "description": "High-end modern loft just a short walk from the Embarcadero, perfect for business or leisure stays."
+  }
+]
