@@ -28,7 +28,7 @@
     "price": 95,
     "title": "Budget Stay in Mission District",
     "numberOfStars": 3,
-    "rating": 4.0,
+    "rating": "4.0",
     "image": "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
     "description": "Affordable and convenient stay in the vibrant Mission District, surrounded by local eateries and cultural attractions."
   },

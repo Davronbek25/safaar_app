@@ -19,12 +19,10 @@ function HomeCarousel() {
     const progress = useSharedValue<number>(0);
 
     const onPressPagination = (index: number) => {
+        // Read progress.value inside the callback, not during render
+        const currentProgress = progress.value;
         ref.current?.scrollTo({
-            /**
-             * Calculate the difference between the current index and the target index
-             * to ensure that the carousel scrolls to the nearest index
-             */
-            count: index - progress.value,
+            count: index - currentProgress,
             animated: true,
         });
     };

@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import apartments from '@/assets/dummyData.json';
+import { FontAwesome } from '@expo/vector-icons';
 
 export default function SearchScreen() {
   return (
@@ -38,7 +39,7 @@ export default function SearchScreen() {
             description={apartment.description}
           >
             <View style={styles.customMarker}>
-              <Text style={styles.markerText}>${apartment.price}</Text>
+              <Text style={styles.markerText}><FontAwesome name="star" size={12} color="#F59E0B" />{apartment.rating}</Text>
             </View>
           </Marker>
         ))}
@@ -202,15 +203,15 @@ const styles = StyleSheet.create({
   },
   customMarker: {
     backgroundColor: 'white',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderWidth: 2,
-    borderColor: '#007AFF',
+    paddingHorizontal: 2,
+    paddingVertical: 1,
+    borderWidth: 1,
+    minHeight: 20,
+    minWidth: 32,
+    borderColor: 'grey',
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    minWidth: 60,
-    height: 32,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
